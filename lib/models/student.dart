@@ -1,3 +1,4 @@
+import 'package:student_app/enumerations/student_guard.dart';
 import 'package:student_app/enumerations/student_level.dart';
 import 'package:student_app/models/mark.dart';
 import 'dart:math';
@@ -10,6 +11,7 @@ class Student{
   StudentLevel level;
   List<Mark>? marks;
   String? photo;
+  StudentGuard guard;
   Student({
     required this.id,
     required this.name,
@@ -18,6 +20,7 @@ class Student{
     this.level=StudentLevel.university,
     this.marks,
     this.photo,
+    this.guard=StudentGuard.average
   });
  //generate a random id for the student instance
  factory Student.generate({
@@ -27,6 +30,7 @@ class Student{
     StudentLevel? level,
     List<Mark>? marks,
     String? photo,
+    StudentGuard? guard,
  })
  {
   return Student(
@@ -37,6 +41,7 @@ class Student{
     level:level ?? StudentLevel.university,
     marks:marks,
     photo: photo,
+    guard: guard ?? StudentGuard.average,
 
   );
  }

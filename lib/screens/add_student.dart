@@ -1,5 +1,7 @@
 // lib/screens/add_student.dart
 import 'package:flutter/material.dart';
+import 'package:student_app/enumerations/student_guard.dart';
+import 'package:student_app/enumerations/student_level.dart';
 import '../models/student.dart';
 
 class AddStudentForm extends StatefulWidget {
@@ -18,7 +20,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
   late TextEditingController _familyNameController;
   late TextEditingController _birthdayController;
   late TextEditingController _levelController;
-  late TextEditingController _guardianController;
+  late TextEditingController _guardController;
   late TextEditingController _photoController;
 
   @override
@@ -30,8 +32,8 @@ class _AddStudentFormState extends State<AddStudentForm> {
     _nameController = TextEditingController(text: student?.name ?? '');
     _familyNameController = TextEditingController(text: student?.familyName ?? '');
     _birthdayController = TextEditingController(text: student?.birthday?.toString().split(' ')[0] ?? '');
-    _levelController = TextEditingController(text: student?.level ?? '');
-    _guardianController = TextEditingController(text: student?.guardian ?? '');
+    _levelController = TextEditingController(text: student?.level  as String);
+    _guardController = TextEditingController(text: student?.guard as String);
     _photoController = TextEditingController(text: student?.photo ?? '');
   }
 
@@ -41,8 +43,14 @@ class _AddStudentFormState extends State<AddStudentForm> {
         name: _nameController.text,
         familyName: _familyNameController.text,
         birthday: DateTime.parse(_birthdayController.text),
-        level: _levelController.text,
-        guardian: _guardianController.text,
+        level: StudentLevel.values.firstWhere(
+        (l) => l.toString() == "Student.Level.${_levelController.text}",
+        orElse: () => StudentLevel.university,
+      ),
+        guard: StudentGuard.values.firstWhere(
+        (l) => l.toString() == "Student.guard.${_guardController.text}",
+        orElse: () => StudentGuard.average,
+      ),
         photo: _photoController.text,
       );
 
@@ -98,9 +106,9 @@ class _AddStudentFormState extends State<AddStudentForm> {
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a level' : null,
               ),
               TextFormField(
-                controller: _guardianController,
-                decoration: InputDecoration(labelText: 'Guardian'),
-                validator: (value) => value == null || value.isEmpty ? 'Please enter a guardian' : null,
+                controller: _guardController,
+                decoration: InputDecoration(labelText: 'Guard'),
+                validator: (value) => value == null || value.isEmpty ? 'Please enter a guard' : null,
               ),
               TextFormField(
                 controller: _photoController,
