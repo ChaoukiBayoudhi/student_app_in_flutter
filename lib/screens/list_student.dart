@@ -61,10 +61,10 @@ class _StudentListScreenState extends State<StudentListScreen> {
           return Card(
             child: ListTile(
               leading: CircleAvatar(
-                backgroundImage: NetworkImage(student.photo),
+                backgroundImage: NetworkImage(student.photo!),
               ),
               title: Text('${student.name} ${student.familyName}'),
-              subtitle: Text('Level: ${student.level}, Guardian: ${student.guardian}'),
+              subtitle: Text('Level: ${student.level}, Guardian: ${student.guard}'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

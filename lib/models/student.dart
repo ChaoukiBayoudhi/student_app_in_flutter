@@ -47,7 +47,7 @@ class Student{
  }
 
   //from JSON to Student object
-  factory Student.toJon(Map<String,dynamic> json)=>
+  factory Student.fromJon(Map<String,dynamic> json)=>
     Student(
       id:json["id"] as int,
       name:json["name"] as String,
