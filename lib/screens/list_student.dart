@@ -9,7 +9,7 @@ class StudentListScreen extends StatefulWidget {
 }
 
 class _StudentListScreenState extends State<StudentListScreen> {
-  List<Student> _students = [];
+  final List<Student> _students = [];
 
   void _addStudent(Student student) {
     setState(() {
@@ -53,7 +53,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Students')),
+      appBar: AppBar(title: const Text('Students')),
       body: ListView.builder(
         itemCount: _students.length,
         itemBuilder: (context, index) {
@@ -69,11 +69,11 @@ class _StudentListScreenState extends State<StudentListScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                     onPressed: () => _updateStudent(student),
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () => _deleteStudent(student.id),
                   ),
                 ],
@@ -84,7 +84,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToAddStudentScreen,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

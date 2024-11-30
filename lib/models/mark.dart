@@ -1,3 +1,6 @@
+import 'package:hive/hive.dart';
+
+part 'mark.g.dart';
 class Mark {
   final double score;
   final String subject;

@@ -32,8 +32,8 @@ class _AddStudentFormState extends State<AddStudentForm> {
     _nameController = TextEditingController(text: student?.name ?? '');
     _familyNameController = TextEditingController(text: student?.familyName ?? '');
     _birthdayController = TextEditingController(text: student?.birthday?.toString().split(' ')[0] ?? '');
-    _levelController = TextEditingController(text: student?.level  as String);
-    _guardController = TextEditingController(text: student?.guard as String);
+    _levelController = TextEditingController(text: student?.level?.toString() ?? '');
+    _guardController = TextEditingController(text: student?.guard?.toString() ?? '');
     _photoController = TextEditingController(text: student?.photo ?? '');
   }
 
@@ -86,37 +86,37 @@ class _AddStudentFormState extends State<AddStudentForm> {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a name' : null,
               ),
               TextFormField(
                 controller: _familyNameController,
-                decoration: InputDecoration(labelText: 'Family Name'),
+                decoration: const InputDecoration(labelText: 'Family Name'),
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a family name' : null,
               ),
               TextFormField(
                 controller: _birthdayController,
-                decoration: InputDecoration(labelText: 'Birthday (YYYY-MM-DD)'),
+                decoration: const InputDecoration(labelText: 'Birthday (YYYY-MM-DD)'),
                 readOnly: true,
                 onTap: _pickDate,
               ),
               TextFormField(
                 controller: _levelController,
-                decoration: InputDecoration(labelText: 'Level'),
+                decoration: const InputDecoration(labelText: 'Level'),
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a level' : null,
               ),
               TextFormField(
                 controller: _guardController,
-                decoration: InputDecoration(labelText: 'Guard'),
+                decoration: const InputDecoration(labelText: 'Guard'),
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a guard' : null,
               ),
               TextFormField(
                 controller: _photoController,
-                decoration: InputDecoration(labelText: 'Photo URL'),
+                decoration: const InputDecoration(labelText: 'Photo URL'),
                 validator: (value) => value == null || value.isEmpty ? 'Please enter a photo URL' : null,
               ),
-              SizedBox(height: 20),
-              ElevatedButton(onPressed: _submitForm, child: Text('Submit')),
+              const SizedBox(height: 20),
+              ElevatedButton(onPressed: _submitForm, child: const Text('Submit')),
             ],
           ),
         ),
