@@ -38,7 +38,7 @@ import 'dart:math';
 
 part 'student.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 4)
 class Student{
   @HiveField(0)
   final int id;
@@ -68,6 +68,7 @@ class Student{
   });
  //generate a random id for the student instance
  factory Student.generate({
+    int? id,
     required String name,
     required String familyName,
     required DateTime birthday,
@@ -78,7 +79,7 @@ class Student{
  })
  {
   return Student(
-    id: Random().nextInt(100000),
+    id: id ?? Random().nextInt(100000),
     name: name,
     familyName: familyName,
     birthday: birthday,

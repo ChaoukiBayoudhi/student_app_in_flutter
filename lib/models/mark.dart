@@ -1,10 +1,15 @@
 import 'package:hive/hive.dart';
 
 part 'mark.g.dart';
+@HiveType(typeId: 3)
 class Mark {
+  @HiveField(0)
   final double score;
+  @HiveField(1)
   final String subject;
+  @HiveField(2)
   final DateTime date;
+  @HiveField(3)
   final String? description;
 
   Mark({
